@@ -28,14 +28,10 @@ workflows:
   release:
     jobs:
       - release:
+          context:
+            - oplabs-fpp-nodes
           filters:
             tags:
               only: /.*/
-            branches:
-              ignore: /.*/
-  test:
-    jobs:
-      - release:
-          filters:
-            branches:
-              only: /main/
+#            branches:
+#              ignore: /.*/
