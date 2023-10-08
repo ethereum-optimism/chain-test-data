@@ -31,3 +31,9 @@ workflows:
           filters:
             tags:
               only: /.*/
+  test:
+    jobs:
+      - release:
+          filters:
+            branches:
+              only: /main/
