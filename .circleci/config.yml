@@ -12,14 +12,22 @@ jobs:
     steps:
       - checkout
       - run:
+          name: "Install gh"
+          command: |
+            curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
+            chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg
+            echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" > /etc/apt/sources.list.d/github-cli.list
+            apt update
+            apt install gh -y
+      - run:
           name: "Checkout monorepo"
           command: |
             git clone -b "aj/goerli-between-outputs" https://github.com/ethereum-optimism/optimism
-      - run:
-          name: "Capture Data"
-          command: |
-            make capture-chain-test-data
-          working_directory: optimism/op-program
+#      - run:
+#          name: "Capture Data"
+#          command: |
+#            make capture-chain-test-data
+#          working_directory: optimism/op-program
       - run:
           name: "Upload Data"
           command: ./upload-data.sh
