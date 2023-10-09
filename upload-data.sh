@@ -6,6 +6,11 @@ GH="gh"
 
 RELEASE_NAME=$(git describe --tags)
 echo "Logging in to GitHub with access token"
+if [ -z "${GITHUB_ACCESS_TOKEN:-}" ]
+then
+  echo "GITHUB_ACCESS_TOKEN not set"
+  exit 1
+fi
 echo "${GITHUB_ACCESS_TOKEN}" | $GH auth login --with-token
 
 cd "${SOURCE_DIR}"
