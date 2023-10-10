@@ -18,4 +18,4 @@ echo "Creating release. Note: Job can only run once per tag, to rerun create a n
 $GH release create --latest --title "${RELEASE_NAME}" --notes "Chain test data ${RELEASE_NAME}" "${RELEASE_NAME}"
 
 echo "Uploading chain data to release"
-$GH release upload "${RELEASE_NAME}" ${SOURCE_DIR}/optimism/op-program/compat-tests/*.tar.bz
+$GH release upload "${RELEASE_NAME}" ${SOURCE_DIR}/optimism/op-program/temp/compat/*.tar.bz
