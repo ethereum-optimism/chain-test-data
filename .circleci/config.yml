@@ -23,11 +23,11 @@ jobs:
           name: "Checkout monorepo"
           command: |
             git clone -b "aj/goerli-between-outputs" https://github.com/ethereum-optimism/optimism
-#      - run:
-#          name: "Capture Data"
-#          command: |
-#            make capture-chain-test-data
-#          working_directory: optimism/op-program
+      - run:
+          name: "Capture Data"
+          command: |
+            make capture-chain-test-data
+          working_directory: optimism/op-program
       - run:
           name: "Upload Data"
           command: ./upload-data.sh
