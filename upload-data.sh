@@ -5,12 +5,13 @@ SOURCE_DIR=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
 GH="gh"
 
 RELEASE_NAME=$(git describe --tags)
-echo "Logging in to GitHub with access token"
-if [ -z "${GITHUB_ACCESS_TOKEN:-}" ]
-then
-  echo "GITHUB_ACCESS_TOKEN not set"
-  exit 1
-fi
+echo "Using release name ${RELEASE_NAME}"
+
+echo "Generating access token"
+npm install
+GITHUB_ACCESS_TOKEN=$(node index.js)
+
+echo "Logging in"
 echo "${GITHUB_ACCESS_TOKEN}" | $GH auth login --with-token
 
 cd "${SOURCE_DIR}"
