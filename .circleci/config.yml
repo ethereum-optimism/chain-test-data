@@ -22,7 +22,7 @@ jobs:
       - run:
           name: "Checkout monorepo"
           command: |
-            git clone -b "aj/goerli-between-outputs" https://github.com/ethereum-optimism/optimism
+            git clone https://github.com/ethereum-optimism/optimism
       - run:
           name: "Capture Data"
           command: |
