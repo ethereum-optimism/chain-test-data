@@ -22,7 +22,7 @@ jobs:
       - run:
           name: "Checkout monorepo"
           command: |
-            git clone -b inphi/pre-acc-program https://github.com/ethereum-optimism/optimism
+            git clone -b inphi/pre-chal https://github.com/ethereum-optimism/optimism
       - run:
           name: "Capture Data"
           command: |
